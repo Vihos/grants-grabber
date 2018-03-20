@@ -1,6 +1,8 @@
 # TODO Twitter
 from sites import stgr
 from sites import scholarshipsads
+from sites import scholarship_positions
+from sites import scholars4dev
 import mmap
 import os.path
 import smtplib
@@ -84,6 +86,14 @@ results = []
 # stgr.parse_site(results)
 
 # Parse site https://www.scholarshipsads.com/degree/bachelor
-scholarshipsads.parse_site(results)
+# scholarshipsads.parse_site(results)
 
-process_information(results)
+# http://scholarship-positions.com/category/under-graduate-scholarship/
+# scholarship_positions.parse_site(results)
+
+# http://www.scholars4dev.com/category/level-of-study/undergraduate-scholarships/
+scholars4dev.parse_site(results)
+
+print(results)
+
+# process_information(results)
