@@ -1,5 +1,6 @@
 # TODO Twitter
-import stgr
+from sites import stgr
+from sites import scholarshipsads
 import mmap
 import os.path
 import smtplib
@@ -36,6 +37,7 @@ def send_email(subject, body, user=MAIL_USER, pwd=MAIL_PWD, recipient=RECIPIENT)
 def process_information(links):
     if not os.path.exists("caches"):
         f = open("caches", "w+")
+        f.write('\n')
         f.close()
 
     f = open("caches", "r")
@@ -79,6 +81,9 @@ def process_information(links):
 results = []
 
 # Parse site http://st-gr.com/?cat=3
-stgr.parse_site(results)
+# stgr.parse_site(results)
+
+# Parse site https://www.scholarshipsads.com/degree/bachelor
+scholarshipsads.parse_site(results)
 
 process_information(results)
