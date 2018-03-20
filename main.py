@@ -33,11 +33,11 @@ def send_email(subject, body, user=MAIL_USER, pwd=MAIL_PWD, recipient=RECIPIENT)
     return False
 
 
-# send_email("test2", "test2")
+def process_information(links):
+    if not os.path.exists("caches"):
+        f = open("caches", "w+")
+        f.close()
 
-links = stgr.parse_site()
-
-if os.path.exists("caches"):
     f = open("caches", "r")
     s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
 
@@ -71,10 +71,14 @@ if os.path.exists("caches"):
 
             print('Successfully sent the mail with ' + str(i) + ' options')
         else:
-            print("failed to send mail")
+            print("Failed to send mail")
     else:
         print('Nothing to send')
-else:
-    f = open("caches", "w+")
 
-    f.close()
+
+results = []
+
+# Parse site http://st-gr.com/?cat=3
+stgr.parse_site(results)
+
+process_information(results)
